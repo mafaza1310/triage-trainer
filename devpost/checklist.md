@@ -59,7 +59,7 @@ Build mode: fast (learner asked for auto mode with a 2–3 sentence explanation 
   Learner check: Mark the fast-breathing chest-injury patient YELLOW and read the explanation.
   Commit: `Add mistakes review with step explanations`
 
-- [ ] **6. Play again, mobile layout and polish**
+- [x] **6. Play again, mobile layout and polish**
   Becomes usable: Play again reshuffles and restarts cleanly; layout looks good on phone and laptop.
   Why now: Completes the loop and the "polished" bar before deploying.
   PRD ref: `prd.md > Play Again`, `prd.md > Look and Feel`

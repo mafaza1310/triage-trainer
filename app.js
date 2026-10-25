@@ -67,6 +67,11 @@ function renderCard() {
   const c = state.order[state.index];
   $("narrative").textContent = c.narrative;
   $("counter").textContent = `${state.index + 1} / ${state.order.length}`;
+  // Replay the small fade so each new patient is noticeable.
+  const card = document.querySelector(".patient");
+  card.classList.remove("enter");
+  void card.offsetWidth;
+  card.classList.add("enter");
 }
 
 // Record the tapped colour and move straight on — no feedback during the round.
@@ -177,6 +182,8 @@ function renderReview(mistakes) {
 $("scene-title").textContent = SCENARIO.title;
 $("scene-briefing").textContent = SCENARIO.briefing;
 $("btn-start").addEventListener("click", startRound);
+$("btn-again").addEventListener("click", startRound);
+$("btn-again-top").addEventListener("click", startRound);
 document.querySelectorAll(".triage").forEach((btn) =>
   btn.addEventListener("click", () => choose(btn.dataset.color))
 );
