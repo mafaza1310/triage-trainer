@@ -69,7 +69,7 @@ Build mode: fast (learner asked for auto mode with a 2–3 sentence explanation 
   Learner check: Play twice on your phone-sized browser window; order should differ.
   Commit: `Add play again, responsive layout and polish`
 
-- [ ] **7. Live on GitHub Pages**
+- [x] **7. Live on GitHub Pages**
   Becomes usable: Anyone can open `https://mafaza1310.github.io/triage-trainer/`.
   Why now: Learner's definition of done requires a public link.
   PRD ref: `prd.md > What We're Building`

@@ -17,6 +17,9 @@ The correct colours are never typed by hand: `start.js` computes them from each 
 No install needed. Download the repo and open `index.html` in a browser.
 Open `selfcheck.html` to verify that all 15 cases give the expected START result (3 GREEN, 5 YELLOW, 5 RED, 2 BLACK).
 
+## Deployment
+Hosted free on GitHub Pages: repo **Settings → Pages → Deploy from a branch → `main` / `(root)`**. Every push to `main` republishes the site within a minute or two.
+
 ## Files
 | File | Job |
 |---|---|
