@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>START Self-check</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: #f4f6fa; color: #1f2933; margin: 0; padding: 16px; }
+    main { max-width: 760px; margin: 0 auto; }
+    table { width: 100%; border-collapse: collapse; background: #fff; margin-bottom: 24px; font-size: 0.95rem; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #e4e7eb; }
+    .pass { color: #15803d; font-weight: 700; }
+    .fail { color: #dc2626; font-weight: 700; }
+    .banner { padding: 12px 16px; border-radius: 10px; color: #fff; font-weight: 700; }
+    .pass-bg { background: #15803d; }
+    .fail-bg { background: #dc2626; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>START self-check</h1>
+    <p>Runs every bus-crash case through <code>startTriage()</code> and compares it with the expected answers in <code>brief.md</code>. <a href="index.html">Back to the trainer</a></p>
+    <div id="summary"></div>
+    <h2>Cases</h2>
+    <table id="cases"></table>
+    <h2>Colour mix</h2>
+    <p id="mix"></p>
+    <h2>Over-/under-triage rules</h2>
+    <table id="rules"></table>
+    <h2>Explanation example</h2>
+    <p id="explanation"></p>
+  </main>
+  <script src="cases.js"></script>
+  <script src="start.js"></script>
+  <script src="selfcheck.js"></script>
+</body>
+</html>
