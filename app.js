@@ -107,6 +107,70 @@ function renderResults(results) {
   $("count-untriaged").textContent = count("untriaged");
   $("stat-untriaged").hidden = !state.timedOut;
   $("results-eyebrow").textContent = state.timedOut ? "Time's up" : "Round complete";
+  renderReview(results.filter((r) => r.outcome !== "correct"));
+}
+
+const OUTCOME_LABEL = { over: "Over-triage", under: "Under-triage", untriaged: "Not triaged" };
+
+// Small coloured pill showing a triage colour, e.g. RED.
+function badge(color) {
+  const span = document.createElement("span");
+  span.className = `badge ${color || "NONE"}`;
+  span.textContent = color || "Not triaged";
+  return span;
+}
+
+// One card per wrong or untriaged patient, explained at the deciding START step.
+function renderReview(mistakes) {
+  const list = $("review-list");
+  list.innerHTML = "";
+  $("review-intro").textContent = mistakes.length
+    ? `${mistakes.length} patient${mistakes.length === 1 ? "" : "s"} to review. Each one shows the START step that decides the correct colour.`
+    : "Perfect round — every patient triaged correctly. Play again to practise with a new order.";
+
+  mistakes.forEach((m) => {
+    const item = document.createElement("article");
+    item.className = `card review-item ${m.outcome}`;
+
+    const head = document.createElement("div");
+    head.className = "review-head";
+    const tag = document.createElement("span");
+    tag.className = `outcome-tag ${m.outcome}`;
+    tag.textContent = OUTCOME_LABEL[m.outcome];
+    head.append(tag);
+
+    const narrative = document.createElement("p");
+    narrative.className = "review-narrative";
+    narrative.textContent = m.case.narrative;
+
+    const answers = document.createElement("dl");
+    answers.className = "review-answers";
+    const row = (label, value) => {
+      const dt = document.createElement("dt");
+      dt.textContent = label;
+      const dd = document.createElement("dd");
+      dd.append(value);
+      answers.append(dt, dd);
+    };
+    row("Your choice", badge(m.choice));
+    row("Correct", badge(m.correct.color));
+    row("Deciding step", stepLabel(m.correct.step));
+
+    const why = document.createElement("p");
+    why.className = "review-explanation";
+    why.textContent = explain(m.choice, m.correct);
+
+    item.append(head, narrative, answers, why);
+
+    if (m.case.teachingNote) {
+      const note = document.createElement("p");
+      note.className = "review-note";
+      note.innerHTML = "<strong>Teaching note:</strong> ";
+      note.append(m.case.teachingNote);
+      item.append(note);
+    }
+    list.append(item);
+  });
 }
 
 // Wire up the page once it has loaded.

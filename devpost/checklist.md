@@ -49,7 +49,7 @@ Build mode: fast (learner asked for auto mode with a 2–3 sentence explanation 
   Learner check: Play a round with a few deliberate mistakes; check the counts match.
   Commit: `Add results screen with over- and under-triage counts`
 
-- [ ] **5. Mistakes review explains each error at the START step**
+- [x] **5. Mistakes review explains each error at the START step**
   Becomes usable: For each wrong or untriaged card: narrative, your choice, correct colour, deciding step, explanation, teaching note.
   Why now: This is the kernel on screen — the "oh, that's cool" beat.
   PRD ref: `prd.md > Mistakes Review`
