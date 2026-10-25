@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>START Triage Trainer</title>
+  <meta name="description" content="Timed adult START triage drill with step-by-step explanations of every mistake.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+
+    <!-- Screen 1: Start -->
+    <section id="screen-start" class="screen">
+      <p class="eyebrow">Mass-casualty triage drill</p>
+      <h1>START Triage Trainer</h1>
+      <p class="lead">Triage a mass-casualty scene against the clock, then see exactly which START step decided every patient you got wrong.</p>
+
+      <div class="card briefing">
+        <p class="eyebrow">Scene briefing</p>
+        <h2 id="scene-title"></h2>
+        <p id="scene-briefing"></p>
+        <ul class="facts">
+          <li><strong>15</strong> adult casualties</li>
+          <li><strong>5:00</strong> scene timer</li>
+          <li><strong>Adult START</strong> algorithm</li>
+        </ul>
+      </div>
+
+      <button id="btn-start" class="btn-primary" type="button">Start</button>
+    </section>
+
+    <!-- Screen 2: Drill -->
+    <section id="screen-drill" class="screen" hidden>
+      <div class="drill-bar">
+        <span id="counter" class="counter">1 / 15</span>
+        <span id="timer" class="timer">5:00</span>
+      </div>
+
+      <article class="card patient">
+        <p class="eyebrow">Patient</p>
+        <p id="narrative" class="narrative"></p>
+      </article>
+
+      <div class="triage-buttons">
+        <button type="button" class="triage GREEN" data-color="GREEN">Green</button>
+        <button type="button" class="triage YELLOW" data-color="YELLOW">Yellow</button>
+        <button type="button" class="triage RED" data-color="RED">Red</button>
+        <button type="button" class="triage BLACK" data-color="BLACK">Black</button>
+      </div>
+    </section>
+
+    <!-- Screen 3: Results and mistakes review -->
+    <section id="screen-results" class="screen" hidden>
+      <h1>Round complete</h1>
+    </section>
+
+  </main>
+
+  <footer class="footer">Educational training tool. Not for clinical decision-making.</footer>
+
+  <script src="cases.js"></script>
+  <script src="start.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

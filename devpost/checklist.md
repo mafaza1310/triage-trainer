@@ -19,7 +19,7 @@ Build mode: fast (learner asked for auto mode with a 2–3 sentence explanation 
   Learner check: Open `selfcheck.html`; every row should say PASS and the summary should be green.
   Commit: `Add START algorithm, bus-crash cases and self-check`
 
-- [ ] **2. You can read the briefing and triage all 15 cards**
+- [x] **2. You can read the briefing and triage all 15 cards**
   Becomes usable: Start screen → Start → one card at a time with counter and four colour buttons → after card 15 a placeholder end screen.
   Why now: Gives the core loop a body as early as possible, on top of the verified algorithm.
   PRD ref: `prd.md > The Core Journey`, `prd.md > Start Screen`, `prd.md > Triage Drill`, `prd.md > Screens and Layout`

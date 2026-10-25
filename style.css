@@ -1,0 +1,136 @@
+/* style.css — look and feel for the START Triage Trainer. */
+
+:root {
+  --bg: #f4f6fa;
+  --card: #ffffff;
+  --text: #1f2933;
+  --muted: #616e7c;
+  --line: #e4e7eb;
+  --accent: #1d4ed8;
+  --accent-dark: #1e40af;
+
+  --green: #15803d;
+  --yellow: #facc15;
+  --red: #dc2626;
+  --black: #111827;
+
+  --radius: 12px;
+  --shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+.app {
+  flex: 1;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 12px; }
+h2 { font-size: 1.35rem; margin: 0 0 8px; }
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.lead { font-size: 1.1rem; color: var(--muted); margin: 0 0 24px; }
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.facts {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.facts li {
+  background: var(--bg);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+}
+
+button { font: inherit; cursor: pointer; }
+
+.btn-primary {
+  width: 100%;
+  min-height: 56px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.btn-primary:hover { background: var(--accent-dark); }
+
+/* Drill screen */
+.drill-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.counter { font-weight: 700; color: var(--muted); font-size: 1.1rem; }
+.timer {
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  font-size: 1.75rem;
+}
+
+.patient { min-height: 180px; }
+.narrative { font-size: 1.25rem; margin: 0; }
+
+.triage-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.triage {
+  min-height: 72px;
+  border: 0;
+  border-radius: var(--radius);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.triage.GREEN { background: var(--green); }
+.triage.YELLOW { background: var(--yellow); color: var(--text); }
+.triage.RED { background: var(--red); }
+.triage.BLACK { background: var(--black); }
+
+.footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 16px;
+  border-top: 1px solid var(--line);
+}
