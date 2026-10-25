@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Triage Trainer App Map</title>
+  <style>
+    :root {
+      --bg: #f4f6fa; --card: #fff; --text: #1f2933; --muted: #616e7c; --line: #d9dee5;
+      --accent: #1d4ed8; --code-bg: #eef2f7;
+      --green: #15803d; --yellow: #facc15; --red: #dc2626; --black: #111827;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0f141b; --card: #18202b; --text: #e6eaf0; --muted: #9aa5b1; --line: #2c3746;
+        --accent: #7aa2ff; --code-bg: #222c39;
+      }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.55; }
+    main { max-width: 760px; margin: 0 auto; padding: 32px 16px 48px; }
+    h1 { font-size: 1.9rem; margin: 0 0 6px; }
+    h2 { font-size: 1.25rem; margin: 32px 0 10px; }
+    .sub { color: var(--muted); margin: 0 0 24px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin-bottom: 12px; }
+    code { background: var(--code-bg); padding: 1px 6px; border-radius: 5px; font-size: 0.92em; }
+    pre { background: var(--code-bg); padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; margin: 10px 0 0; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; font-size: 0.9rem; }
+    .stop-num { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; margin-right: 8px; }
+    .flow svg { width: 100%; height: auto; display: block; }
+    .flow text { fill: var(--text); font-family: inherit; }
+    .flow .box { fill: var(--card); stroke: var(--line); stroke-width: 1.5; }
+    .flow .file { fill: var(--muted); font-size: 11px; }
+    .flow .arrow { stroke: var(--accent); stroke-width: 2; fill: none; }
+    details { margin-top: 8px; }
+    summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+    .foot { color: var(--muted); font-size: 0.85rem; margin-top: 32px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>START Triage Trainer — App Map</h1>
+  <p class="sub">A take-home guide to how the app works and where to make changes. Snapshot of commit <code>7ba7365</code>; the code may drift after this.</p>
+
+  <h2>The app in five pieces</h2>
+  <div class="card">
+    <table>
+      <tr><th>File</th><th>Job</th><th>Analogy</th></tr>
+      <tr><td><code>index.html</code></td><td>The three screens (start, drill, results) and the footer</td><td>Skeleton</td></tr>
+      <tr><td><code>style.css</code></td><td>Colours, spacing, button sizes, phone vs laptop layout</td><td>Clothing</td></tr>
+      <tr><td><code>cases.js</code></td><td>The 15 patients' findings and teaching notes — no answers</td><td>Case file</td></tr>
+      <tr><td><code>start.js</code></td><td>The START algorithm and the over/under-triage rules</td><td>The protocol</td></tr>
+      <tr><td><code>app.js</code></td><td>Reacts to taps, runs the timer, scores, draws the review</td><td>The instructor</td></tr>
+    </table>
+    <p>Everything runs in the browser. There is no server and no database; GitHub Pages just hands these files to whoever opens the link.</p>
+  </div>
+
+  <h2>One tap, followed through the code</h2>
+  <div class="card flow">
+    <svg viewBox="0 0 720 190" role="img" aria-label="Tap a colour button, choose() records it, after the last card scoreRound() asks startTriage() for the correct answer, renderReview() shows the explanation.">
+      <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/></marker></defs>
+      <rect class="box" x="10" y="20" width="150" height="62" rx="10"/>
+      <text x="85" y="46" text-anchor="middle" font-weight="700">Tap YELLOW</text>
+      <text class="file" x="85" y="66" text-anchor="middle">index.html button</text>
+
+      <rect class="box" x="195" y="20" width="150" height="62" rx="10"/>
+      <text x="270" y="46" text-anchor="middle" font-weight="700">choose()</text>
+      <text class="file" x="270" y="66" text-anchor="middle">app.js — saves answer</text>
+
+      <rect class="box" x="380" y="20" width="150" height="62" rx="10"/>
+      <text x="455" y="46" text-anchor="middle" font-weight="700">scoreRound()</text>
+      <text class="file" x="455" y="66" text-anchor="middle">app.js — after last card</text>
+
+      <rect class="box" x="565" y="20" width="145" height="62" rx="10"/>
+      <text x="637" y="46" text-anchor="middle" font-weight="700">startTriage()</text>
+      <text class="file" x="637" y="66" text-anchor="middle">start.js — the answer</text>
+
+      <rect class="box" x="300" y="118" width="300" height="62" rx="10"/>
+      <text x="450" y="144" text-anchor="middle" font-weight="700">renderReview() + explain()</text>
+      <text class="file" x="450" y="164" text-anchor="middle">"You chose YELLOW, but … means RED at the … step."</text>
+
+      <path class="arrow" d="M160 51 H190" marker-end="url(#ah)"/>
+      <path class="arrow" d="M345 51 H375" marker-end="url(#ah)"/>
+      <path class="arrow" d="M530 51 H560" marker-end="url(#ah)"/>
+      <path class="arrow" d="M637 82 V149 H605" marker-end="url(#ah)"/>
+    </svg>
+  </div>
+
+  <h2>The route (3 stops)</h2>
+  <div class="card">
+    <p><span class="stop-num">1</span><strong>The tap is caught</strong> — <code>app.js</code>, search <code>btn.dataset.color</code> and <code>function choose</code>.<br>
+    Every colour button carries a label like <code>data-color="YELLOW"</code>. One listener passes that label to <code>choose()</code>, which saves it under the patient's id in <code>state.answers</code>. Then it shows the next card, or calls <code>endRound()</code> after card 15.</p>
+    <details><summary>Show the code</summary>
+<pre><code>btn.addEventListener("click", () =&gt; choose(btn.dataset.color))
+
+function choose(color) {
+  const c = state.order[state.index];
+  state.answers[c.id] = color;
+  state.index++;
+  if (state.index &lt; state.order.length) renderCard();
+  else endRound();
+}</code></pre></details>
+  </div>
+  <div class="card">
+    <p><span class="stop-num">2</span><strong>The algorithm decides</strong> — <code>start.js</code>, search <code>function startTriage</code>.<br>
+    This is the START algorithm written as one function. It checks walking → breathing → respiratory rate → perfusion → mental status in order and returns at the first step that decides. The answer key is never typed by hand: <code>scoreRound()</code> in <code>app.js</code> asks this function for the right answer, then <code>classifyError()</code> labels your choice correct, over- or under-triage.</p>
+    <details><summary>Show the code</summary>
+<pre><code>if (p.rr !== null &amp;&amp; p.rr &gt; 30) {
+  return { color: "RED", step: "respiratory rate",
+           reason: `a respiratory rate above 30 (here ${p.rr}/min)` };
+}</code></pre></details>
+  </div>
+  <div class="card">
+    <p><span class="stop-num">3</span><strong>You see the explanation</strong> — <code>app.js</code>, search <code>function renderReview</code>; sentence built by <code>explain()</code> in <code>start.js</code>.<br>
+    For each wrong or untriaged patient it builds one review card: narrative, your choice, correct colour, deciding step, and the sentence that slots the algorithm's <code>reason</code> into "You chose {choice}, but {reason} means {colour} at the {step} step."</p>
+  </div>
+
+  <h2>To change this, start here</h2>
+  <div class="card">
+    <table>
+      <tr><th>I want to…</th><th>Go to</th></tr>
+      <tr><td>Edit a patient or teaching note</td><td><code>cases.js</code> → <code>CASES</code>, then open <code>selfcheck.html</code></td></tr>
+      <tr><td>Change the scene length (5:00)</td><td><code>cases.js</code> → <code>SCENARIO.seconds</code></td></tr>
+      <tr><td>Change the briefing text</td><td><code>cases.js</code> → <code>SCENARIO.briefing</code></td></tr>
+      <tr><td>Reword an explanation</td><td><code>start.js</code> → the <code>reason</code> strings, or <code>explain()</code></td></tr>
+      <tr><td>Change the over/under rules</td><td><code>start.js</code> → <code>classifyError()</code></td></tr>
+      <tr><td>Change colours or button size</td><td><code>style.css</code> → <code>:root</code> variables, <code>.triage</code></td></tr>
+      <tr><td>Add a second scenario (future)</td><td>new case list in <code>cases.js</code> + a picker in <code>index.html</code>/<code>app.js</code></td></tr>
+    </table>
+  </div>
+
+  <h2>A practice to reuse</h2>
+  <div class="card">
+    <p><strong>Make the computer check the expert content.</strong> The brief listed the expected colour for each of the 15 cases. Instead of trusting them, <code>selfcheck.js</code> runs every case through <code>startTriage()</code> and compares the results (all 15 PASS, mix 3/5/5/2). That check was the first build step, before any screen existed, so every later step rested on a verified answer key.</p>
+    <p>The same approach works on other projects: whenever an app depends on rules (a scoring system, a clinical guideline, a protocol), write the rule as one small pure function. Then write down a handful of known cases with their expected answers, and check them automatically before building screens. It works like validating an instrument before a study.</p>
+  </div>
+
+  <h2>Run it again</h2>
+  <div class="card">
+    <p><strong>Live:</strong> <a href="https://mafaza1310.github.io/triage-trainer/">mafaza1310.github.io/triage-trainer</a><br>
+    <strong>Locally:</strong> double-click <code>index.html</code> in the project folder. <strong>Self-check:</strong> open <code>selfcheck.html</code>.<br>
+    <strong>Publish a change:</strong> commit and push to <code>main</code>; GitHub Pages updates in 1–2 minutes.</p>
+  </div>
+
+  <p class="foot">Educational training tool. Not for clinical decision-making. Reopen this map any time: <code>devpost/app-map.html</code>.</p>
+</main>
+</body>
+</html>

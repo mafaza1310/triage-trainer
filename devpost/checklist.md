@@ -81,24 +81,24 @@ Build mode: fast (learner asked for auto mode with a 2–3 sentence explanation 
 
 ## Hands-on Checkpoints
 
-- [ ] Early usable behavior explored — learner opens `index.html` after slice 2 (deferred to the final session at learner's request for auto mode)
-- [ ] Final kick-the-tires exploration and feedback completed
+- [x] Early usable behavior explored — combined with the final session (learner asked for auto mode); learner tried the live app
+- [x] Final kick-the-tires exploration and feedback completed — learner: "works well"
 
 ## Final Review
 
-- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+- [x] Final review complete — feedback resolved and learner confirms ready to ship (no changes requested)
 
 ## Code Tour and App Map
 
-- [ ] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
-- [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
-- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
+- [x] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
+- [x] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
+- [x] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
 
-Activity and evidence:
-Route and stops:
-Edit outcome:
-Reflection:
-Activity mode:
+Activity and evidence: Short static walkthrough at learner's request ("keep it short"), following one colour tap; evidence: browser tests for every slice, `selfcheck.html` 15/15 PASS locally and on the live site.
+Route and stops: 1) `app.js` `btn.dataset.color` → `choose()`; 2) `start.js` `startTriage()` via `scoreRound()`/`classifyError()`; 3) `app.js` `renderReview()` + `start.js` `explain()`.
+Edit outcome: offered as optional (change `SCENARIO.seconds`); not done during the short walkthrough.
+Reflection: offered as optional.
+Activity mode: static walkthrough (source excerpts in chat + app map), not a live editor session.
 
 ## Revisions
 
