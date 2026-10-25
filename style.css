@@ -131,6 +131,34 @@ button { font: inherit; cursor: pointer; }
 .triage.RED { background: var(--red); }
 .triage.BLACK { background: var(--black); }
 
+/* Results screen */
+.score-card { text-align: center; }
+.score { display: flex; justify-content: center; align-items: baseline; gap: 8px; }
+.score-big { font-size: 3.5rem; font-weight: 800; line-height: 1; }
+.score-of { font-size: 1.2rem; color: var(--muted); }
+.time-used { margin: 8px 0 0; color: var(--muted); }
+.time-used strong { color: var(--text); font-variant-numeric: tabular-nums; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.stat {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.stat[hidden] { display: none; }
+.stat-num { font-size: 2rem; font-weight: 800; line-height: 1.1; }
+.stat-label { font-weight: 700; }
+.stat-hint { font-size: 0.85rem; color: var(--muted); }
+
 .footer {
   text-align: center;
   font-size: 0.85rem;

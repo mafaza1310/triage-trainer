@@ -52,7 +52,34 @@
 
     <!-- Screen 3: Results and mistakes review -->
     <section id="screen-results" class="screen" hidden>
-      <h1>Round complete</h1>
+      <p class="eyebrow" id="results-eyebrow">Round complete</p>
+      <h1>Your results</h1>
+
+      <div class="card score-card">
+        <div class="score">
+          <span id="score-correct" class="score-big">0</span>
+          <span class="score-of">/ 15 correct</span>
+        </div>
+        <p class="time-used">Time used: <strong id="time-used">0:00</strong></p>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <span id="count-under" class="stat-num">0</span>
+          <span class="stat-label">Under-triage</span>
+          <span class="stat-hint">Too low — a salvageable patient may not get timely care</span>
+        </div>
+        <div class="stat">
+          <span id="count-over" class="stat-num">0</span>
+          <span class="stat-label">Over-triage</span>
+          <span class="stat-hint">Too high — scarce resources go to the wrong patient</span>
+        </div>
+        <div class="stat" id="stat-untriaged">
+          <span id="count-untriaged" class="stat-num">0</span>
+          <span class="stat-label">Untriaged</span>
+          <span class="stat-hint">Time ran out before you reached them</span>
+        </div>
+      </div>
     </section>
 
   </main>

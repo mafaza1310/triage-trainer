@@ -84,7 +84,29 @@ function choose(color) {
 function endRound() {
   clearInterval(state.timerId);
   state.timerId = null;
+  renderResults(scoreRound());
   showScreen("screen-results");
+}
+
+// Compare every answer with the colour the START algorithm computes.
+function scoreRound() {
+  return state.order.map((c) => {
+    const choice = state.answers[c.id] || null;
+    const correct = startTriage(c);
+    const outcome = choice === null ? "untriaged" : classifyError(choice, correct.color);
+    return { case: c, choice, correct, outcome };
+  });
+}
+
+function renderResults(results) {
+  const count = (outcome) => results.filter((r) => r.outcome === outcome).length;
+  $("score-correct").textContent = count("correct");
+  $("time-used").textContent = formatTime(SCENARIO.seconds - state.secondsLeft);
+  $("count-over").textContent = count("over");
+  $("count-under").textContent = count("under");
+  $("count-untriaged").textContent = count("untriaged");
+  $("stat-untriaged").hidden = !state.timedOut;
+  $("results-eyebrow").textContent = state.timedOut ? "Time's up" : "Round complete";
 }
 
 // Wire up the page once it has loaded.

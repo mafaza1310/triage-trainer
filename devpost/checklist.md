@@ -39,7 +39,7 @@ Build mode: fast (learner asked for auto mode with a 2–3 sentence explanation 
   Learner check: Start a round and watch the timer count down.
   Commit: `Add scene timer and end-of-round logic`
 
-- [ ] **4. Results show score and over/under-triage counts**
+- [x] **4. Results show score and over/under-triage counts**
   Becomes usable: Results screen with correct / 15, time used, over-, under-triage and untriaged counts.
   Why now: Turns the round into feedback; needs the timer's untriaged state.
   PRD ref: `prd.md > Results Screen`, `prd.md > Over-triage and Under-triage`
