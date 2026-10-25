@@ -29,7 +29,7 @@ Build mode: fast (learner asked for auto mode with a 2–3 sentence explanation 
   Learner check: Open `index.html`, read the briefing, tap through all 15 cards.
   Commit: `Add start and drill screens`
 
-- [ ] **3. The scene timer runs and ends the round**
+- [x] **3. The scene timer runs and ends the round**
   Becomes usable: A 5:00 countdown on the drill screen; at 0:00 the round ends with remaining cards untriaged.
   Why now: Time pressure is a core difference from flashcards and changes how the round ends.
   PRD ref: `prd.md > Scene Timer`

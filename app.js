@@ -5,6 +5,9 @@ const state = {
   order: [],    // this round's cases, shuffled
   index: 0,     // which card is showing
   answers: {},  // caseId -> chosen colour
+  secondsLeft: SCENARIO.seconds,
+  timerId: null,
+  timedOut: false,
 };
 
 const $ = (id) => document.getElementById(id);
@@ -25,12 +28,39 @@ function shuffle(list) {
   return a;
 }
 
+// 300 -> "5:00", 59 -> "0:59"
+function formatTime(seconds) {
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
+
+function renderTimer() {
+  $("timer").textContent = formatTime(state.secondsLeft);
+  $("timer").classList.toggle("warning", state.secondsLeft <= 30);
+}
+
+// One timer for the whole scene. Runs once per second.
+function tick() {
+  state.secondsLeft--;
+  renderTimer();
+  if (state.secondsLeft <= 0) {
+    state.timedOut = true;
+    endRound();
+  }
+}
+
 function startRound() {
+  clearInterval(state.timerId); // never let an old timer keep running
   state.order = shuffle(CASES);
   state.index = 0;
   state.answers = {};
+  state.secondsLeft = SCENARIO.seconds;
+  state.timedOut = false;
   renderCard();
+  renderTimer();
   showScreen("screen-drill");
+  state.timerId = setInterval(tick, 1000);
 }
 
 function renderCard() {
@@ -52,6 +82,8 @@ function choose(color) {
 }
 
 function endRound() {
+  clearInterval(state.timerId);
+  state.timerId = null;
   showScreen("screen-results");
 }
 
